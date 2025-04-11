@@ -1,6 +1,7 @@
 ---
-title: WebHID ID5G3
-layout: home
+title: Demo Docs
+layout: default
+parent: V5_SRED
 ---
 
 # MagTek WebHID ID5G3 Demo Documentation

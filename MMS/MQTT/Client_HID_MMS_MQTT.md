@@ -1,13 +1,15 @@
 ---
-title: HID MQTT Device Client
-layout: home
+title: Device Client Demo Docs
+parent: MMS
+layout: default
+nav_order: 2
 ---
 
 # HID MQTT Device Client Documentation
 
 ## Overview
 
-The HID MQTT Device Client is a web-based tool that enables interaction with MagTek devices over MQTT. It facilitates:
+The [HID MQTT Device Client](https://rms.magensa.net/TEST/demo/mmsmqttdevice.html) is a web-based tool that enables interaction with MagTek devices over MQTT. It facilitates:
 - Device connection via MQTT
 - Command execution
 - Real-time updates through a user interface
@@ -21,11 +23,13 @@ Devices supported via USB HID include:
 - DynaFlex II Go
 - DynaFlex II PED
 - DynaProx
+
 ---
 
 ## Table of Contents
 
 - [Setup](#setup)
+- [HID MQTT Device Client](https://rms.magensa.net/TEST/demo/mmsmqttdevice.html)
   - [Dependencies](#dependencies)
 - [Initialization](#initialization)
 - [Core Features](#core-features)

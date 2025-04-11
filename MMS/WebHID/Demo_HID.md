@@ -1,13 +1,16 @@
 ---
-title: HID MMS Demo
-layout: home
+title: Demo Docs
+layout: default
+parent: Web HID
+nav_order: 2
 ---
 
-# MagTek HID MMS Demo
+# MMS HID Demo
 
 ## Table of Contents
 
 - [Overview](#overview)
+- [MMS HID Demo](https://rms.magensa.net/TEST/demo/mmsdemo.html)
 - [Modules and Dependencies](#modules-and-dependencies)
 - [HTML Structure](#html-structure)
 - [Key Functionalities](#key-functionalities)
@@ -25,11 +28,13 @@ layout: home
 The MagTek HID MMS Demo provides an interactive interface for testing and interacting with MagTek HID devices that implement MagTek Messaging Schema (MMS) system architecture.  This demo includes functionality for device connection, command execution, and USB status monitoring.
 
 Devices supported include:
-- DynaFlex I
+- DynaFlex
+- DynaFlex Pro
 - DynFlex II
 - DynaFlex II Go
 - DynaFlex II PED
 - DynaProx
+
 ---
 
 ## Modules and Dependencies

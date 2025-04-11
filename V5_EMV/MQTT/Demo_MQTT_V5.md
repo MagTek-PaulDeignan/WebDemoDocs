@@ -1,3 +1,10 @@
+---
+title: MQTT
+layout: default
+parent: V5 EMV
+nav_order: 2
+---
+
 # MagTek MQTT V5 Demo Documentation
 
 ## Overview

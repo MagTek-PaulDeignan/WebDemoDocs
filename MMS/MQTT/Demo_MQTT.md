@@ -1,8 +1,16 @@
-# MagTek WebSocket MMS Demo Documentation
+---
+title: Demo Docs
+parent: MMS
+layout: default
+nav_order: 1
+---
+
+# MagTek MQTT MMS Demo Documentation
 
 ## Table of Contents
 
 - [Overview](#overview)
+- [MQTT MMS Demo](https://rms.magensa.net/TEST/demo/mmsMQTTDemo.html)
 - [Modules and Dependencies](#modules-and-dependencies)
 - [HTML Structure](#html-structure)
 - [Key Functionalities](#key-functionalities)
@@ -11,7 +19,7 @@
   - [Command Data Input and Processing](#command-data-input-and-processing)
   - [Command List Dropdown](#command-list-dropdown)
 - [JavaScript Implementation](#javascript-implementation)
-  - [WebSocket Communication](#websocket-communication)
+  - [MQTT Communication](#mqtt-communication)
   - [Command Handling](#command-handling)
 - [Event Handling](#event-handling)
 - [License](#license)
@@ -20,10 +28,16 @@
 
 ## Overview
 
-The MagTek WebSocket MMS Demo provides an interactive interface for testing and interacting with MagTek's DynaFlex II PED device via WebSocket communication. This demo includes device connection, command execution, and WebSocket-specific features like managing concurrent connections.
+The MagTek MQTT MMS Demo provides an interactive interface for testing and interacting with MagTek'MMS devices via MQTT communication. This demo includes device connection, command execution, and MQTT-specific features for efficient message-based communication.
 
 Devices supported include:
-- DynaFlex II PED
+- DynaFlex I  *
+- DynFlex II *
+- DynaFlex II Go *
+- DynaFlex II PED (Native MQTT Support)
+- DynaProx *
+
+(*requires the MMS Device Client)
 ---
 
 ## Modules and Dependencies
@@ -41,7 +55,7 @@ Devices supported include:
 3. JavaScript Modules:
    - mt_Utils: Provides utility functions for encoded values, delays, and data parsing.
    - mt_UI: Manages UI updates such as logs and display messages.
-   - mt_WSS: WebSocket API to establish and manage device communication.
+   - Demo_mmsMQTT: MQTT API to establish and manage device communication.
    - mt_events: Event emitter for managing device events.
 
 ---
@@ -59,7 +73,7 @@ The header includes the MagTek logo and the title of the application:
   </a>
 </div>
 <div class="container">
-  <h1>WebSocket MMS Demo</h1>
+  <h1>MQTT MMS Demo</h1>
 </div>
 ```
 
@@ -133,25 +147,25 @@ Provides pre-defined commands for common device operations such as starting EMV,
 
 ## JavaScript Implementation
 
-### WebSocket Communication
+### MQTT Communication
 
-The `Demo_mmsWebSocket.js` file establishes and manages WebSocket connections, allowing multiple concurrent connections as per the pre-defined commands.
+The `Demo_mmsMQTT.js` file establishes and manages MQTT connections, allowing message-based communication with devices.
 
-#### Example Commands for WebSocket Connections
+#### Example Commands for MQTT Communication
 
-- Set WebSocket Connections to 1:
+- Start EMV:
   ```javascript
-  SENDCOMMAND,AA0081040155D1118410D1118501018704020201018903CA0101
+  SENDCOMMAND,AA008104010010018430100182013CA30981010182010183010184020003861A9C01009F02060000000001009F03060000000000005F2A020840
   ```
 
-- Set WebSocket Connections to 4:
+- Reset Device:
   ```javascript
-  SENDCOMMAND,AA0081040155D1118410D1118501018704020201018903CA0104
+  SENDCOMMAND,AA00810401121F0184021F01
   ```
 
 ### Command Handling
 
-The WebSocket commands are processed through a robust handler that supports:
+The MQTT commands are processed through a robust handler that supports:
 
 - Sending commands
 - Managing device state transitions
@@ -162,14 +176,14 @@ The WebSocket commands are processed through a robust handler that supports:
 - Send Command:
   ```javascript
   function sendCommand(command) {
-    // Logic to send a WebSocket command to the device
+    // Logic to send an MQTT command to the device
   }
   ```
 
-- Handle WebSocket Connection Change:
+- Handle MQTT Message:
   ```javascript
-  function setWebSocketConnections(connectionCount) {
-    // Logic to adjust the number of WebSocket connections
+  function handleMessage(topic, message) {
+    // Logic to process incoming MQTT messages
   }
   ```
 

@@ -1,3 +1,10 @@
+---
+title: WebSocket Configure
+layout: default
+parent: Configure
+nav_order: 2
+---
+
 # MagTek WebSocket Config Documentation
 
 ## Overview

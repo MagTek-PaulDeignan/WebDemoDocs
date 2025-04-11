@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: MagTek Javascript Examples
+title: MagTek Web Demo Examples
 email: support@magtek.com
 
 url: "" # the base hostname & protocol for your site, e.g. http://example.com

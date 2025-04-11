@@ -1,8 +1,17 @@
-# MagTek MQTT MMS Demo Documentation
+---
+title: Demo Docs
+layout: home
+parent: WebSocket
+nav_order: 
+---
+
+
+# MagTek WebSocket MMS Demo Documentation
 
 ## Table of Contents
 
 - [Overview](#overview)
+- [WebSocket MMS Demo](https://rms.magensa.net/TEST/demo/mmsWebSocket.html)
 - [Modules and Dependencies](#modules-and-dependencies)
 - [HTML Structure](#html-structure)
 - [Key Functionalities](#key-functionalities)
@@ -11,25 +20,18 @@
   - [Command Data Input and Processing](#command-data-input-and-processing)
   - [Command List Dropdown](#command-list-dropdown)
 - [JavaScript Implementation](#javascript-implementation)
-  - [MQTT Communication](#mqtt-communication)
+  - [WebSocket Communication](#websocket-communication)
   - [Command Handling](#command-handling)
-- [Event Handling](#event-handling)
 - [License](#license)
 
 ---
 
 ## Overview
 
-The MagTek MQTT MMS Demo provides an interactive interface for testing and interacting with MagTek'MMS devices via MQTT communication. This demo includes device connection, command execution, and MQTT-specific features for efficient message-based communication.
+MagTek WebSocket MMS Demo provides an interactive interface for testing and interacting with MagTek's DynaFlex II PED device via WebSocket communication. This demo includes device connection, command execution, and WebSocket-specific features like managing concurrent connections.
 
 Devices supported include:
-- DynaFlex I  *
-- DynFlex II *
-- DynaFlex II Go *
-- DynaFlex II PED (Native MQTT Support)
-- DynaProx *
-
-(*requires the MMS Device Client)
+- DynaFlex II PED
 ---
 
 ## Modules and Dependencies
@@ -44,11 +46,9 @@ Devices supported include:
    - File: `./css/site.css`
    - Custom styling for the demo interface.
 
-3. JavaScript Modules:
-   - mt_Utils: Provides utility functions for encoded values, delays, and data parsing.
-   - mt_UI: Manages UI updates such as logs and display messages.
-   - Demo_mmsMQTT: MQTT API to establish and manage device communication.
-   - mt_events: Event emitter for managing device events.
+3. JavaScript Module:
+   - File: `./js/Demo_mmsWebSocket.js`
+   - Contains the core functionality for WebSocket communication and device interaction.
 
 ---
 
@@ -65,7 +65,7 @@ The header includes the MagTek logo and the title of the application:
   </a>
 </div>
 <div class="container">
-  <h1>MQTT MMS Demo</h1>
+  <h1>WebSocket MMS Demo</h1>
 </div>
 ```
 
@@ -139,25 +139,25 @@ Provides pre-defined commands for common device operations such as starting EMV,
 
 ## JavaScript Implementation
 
-### MQTT Communication
+### WebSocket Communication
 
-The `Demo_mmsMQTT.js` file establishes and manages MQTT connections, allowing message-based communication with devices.
+The `Demo_mmsWebSocket.js` file establishes and manages WebSocket connections, allowing multiple concurrent connections as per the pre-defined commands.
 
-#### Example Commands for MQTT Communication
+#### Example Commands for WebSocket Connections
 
-- Start EMV:
+- Set WebSocket Connections to 1:
   ```javascript
-  SENDCOMMAND,AA008104010010018430100182013CA30981010182010183010184020003861A9C01009F02060000000001009F03060000000000005F2A020840
+  SENDCOMMAND,AA0081040155D1118410D1118501018704020201018903CA0101
   ```
 
-- Reset Device:
+- Set WebSocket Connections to 4:
   ```javascript
-  SENDCOMMAND,AA00810401121F0184021F01
+  SENDCOMMAND,AA0081040155D1118410D1118501018704020201018903CA0104
   ```
 
 ### Command Handling
 
-The MQTT commands are processed through a robust handler that supports:
+The WebSocket commands are processed through a robust handler that supports:
 
 - Sending commands
 - Managing device state transitions
@@ -168,54 +168,19 @@ The MQTT commands are processed through a robust handler that supports:
 - Send Command:
   ```javascript
   function sendCommand(command) {
-    // Logic to send an MQTT command to the device
+    // Logic to send a WebSocket command to the device
   }
   ```
 
-- Handle MQTT Message:
+- Handle WebSocket Connection Change:
   ```javascript
-  function handleMessage(topic, message) {
-    // Logic to process incoming MQTT messages
+  function setWebSocketConnections(connectionCount) {
+    // Logic to adjust the number of WebSocket connections
   }
-  ```
-
----
-
-## Event Handling
-
-### Subscribed Events
-
-Event listeners provide real-time feedback on device interactions, including input reports, barcode detection, contactless events, and errors.
-
-#### Example Events
-
-- OnDeviceConnect: Triggered when a device is connected.
-  ```javascript
-  EventEmitter.on("OnDeviceConnect", (e) => {
-    mt_UI.setUSBConnected("Connected");
-  });
-  ```
-
-- OnContactlessCardDetected: Triggered when a contactless card is detected.
-  ```javascript
-  EventEmitter.on("OnContactlessCardDetected", async (e) => {
-    mt_UI.LogData(`Contactless Card Detected`);
-  });
-  ```
-
-- OnError: Captures error details.
-  ```javascript
-  EventEmitter.on("OnError", (e) => {
-    mt_UI.LogData(`Error: ${e.Source} ${JSON.stringify(e.Data)}`);
-  });
   ```
 
 ---
 
 ## License
-
-```plaintext
 Copyright 2020-2025 MagTek, Inc., Paul Deignan
-
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-```

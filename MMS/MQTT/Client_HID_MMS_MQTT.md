@@ -1,6 +1,6 @@
 ---
 title: Device Client Demo Docs
-parent: MMS
+parent: MQTT
 layout: default
 nav_order: 2
 ---
@@ -18,7 +18,8 @@ The [HID MQTT Device Client](https://rms.magensa.net/TEST/demo/mmsmqttdevice.htm
 This documentation outlines the setup, core features, and usage instructions.
 
 Devices supported via USB HID include:
-- DynaFlex I
+- DynaFlex
+- DynaFlex Pro
 - DynFlex II
 - DynaFlex II Go
 - DynaFlex II PED

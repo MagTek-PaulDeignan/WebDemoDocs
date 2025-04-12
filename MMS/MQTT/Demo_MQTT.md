@@ -1,8 +1,8 @@
 ---
 title: MQTT MMS Docs
-parent: MMS
+parent: MQTT
 layout: default
-nav_order:
+nav_order: 1
 ---
 
 # MagTek MQTT MMS Demo Documentation

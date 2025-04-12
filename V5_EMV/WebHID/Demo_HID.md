@@ -2,7 +2,7 @@
 title: WebHID V5 Docs
 layout: default
 parent: V5 EMV
-nav_order: 1
+nav_order: 2
 ---
 
 # MagTek WebHID V5 Demo

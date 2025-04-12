@@ -7,223 +7,75 @@ nav_order: 1
 
 # MagTek MQTT MMS Demo Documentation
 
-## Table of Contents
+This document provides instructions for using the **MagTek MQTT MMS Demo** page to interact with your MagTek device using **MQTT** for remote messaging and management.
 
-- [Overview](#overview)
-- [MQTT MMS Demo](https://rms.magensa.net/TEST/demo/mmsMQTTDemo.html)
-- [Modules and Dependencies](#modules-and-dependencies)
-- [HTML Structure](#html-structure)
-- [Key Functionalities](#key-functionalities)
-  - [USB Connection Status](#usb-connection-status)
-  - [Device Controls](#device-controls)
-  - [Command Data Input and Processing](#command-data-input-and-processing)
-  - [Command List Dropdown](#command-list-dropdown)
-- [JavaScript Implementation](#javascript-implementation)
-  - [MQTT Communication](#mqtt-communication)
-  - [Command Handling](#command-handling)
-- [Event Handling](#event-handling)
-- [License](#license)
+The page serves as the MQTT MMS Demo interface for MagTek devices. It allows users to interact with any properly configured **MQTT-enabled DynaFlex II PED** device through features like opening and closing connections, clearing logs, sending specific commands, and configuring auto-start options for **EMV**, **NFC**, **MSR**, and **Touch**. A dropdown menu provides a list of predefined commands for testing and operations.
 
 ---
 
-## Overview
+## Getting Started
 
-The MagTek MQTT MMS Demo provides an interactive interface for testing and interacting with MagTek'MMS devices via MQTT communication. This demo includes device connection, command execution, and MQTT-specific features for efficient message-based communication.
-
-Devices supported include:
-- DynaFlex I  *
-- DynFlex II *
-- DynaFlex II Go *
-- DynaFlex II PED (Native MQTT Support)
-- DynaProx *
-
-(*requires the MMS Device Client)
----
-
-## Modules and Dependencies
-
-### CSS and JavaScript Resources
-
-1. Bootstrap CSS:
-   - URL: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css`
-   - Provides responsive design and UI components.
-
-2. Site-specific CSS:
-   - File: `./css/site.css`
-   - Custom styling for the demo interface.
-
-3. JavaScript Modules:
-   - mt_Utils: Provides utility functions for encoded values, delays, and data parsing.
-   - mt_UI: Manages UI updates such as logs and display messages.
-   - Demo_mmsMQTT: MQTT API to establish and manage device communication.
-   - mt_events: Event emitter for managing device events.
+Access the MQTT MMS Demo page using a compatible web browser with **JavaScript enabled**.
 
 ---
 
-## HTML Structure
+## Device Connection
 
-### Header Section
-
-The header includes the MagTek logo and the title of the application:
-
-```html
-<div class="container">
-  <a href="index.html">
-    <img src="./images/magtek_logo.png" alt="Logo" width="150">
-  </a>
-</div>
-<div class="container">
-  <h1>MQTT MMS Demo</h1>
-</div>
-```
-
-### Main Body
-
-#### USB Connection Status
-
-Displays the USB connection status using an image and text indicator:
-
-```html
-<img id="USBStatus" src="./images/usb-disconnected.png">
-<span id="lblUSBStatus">Disconnected</span>
-```
-
-#### Device Controls
-
-Buttons for managing the device connection:
-
-```html
-<button class="btn btn-primary" id="deviceOpen">Open</button>
-<button class="btn btn-primary" id="deviceClose">Close</button>
-<button class="btn btn-primary" id="clearCommand">Clear</button>
-```
-
-#### Command Data Input and Processing
-
-Input field and button for sending commands to the device:
-
-```html
-<input type="text" class="form-control" name="sendData" id="sendData">
-<button class="btn btn-primary" id="sendCommand">Send Command</button>
-```
-
-#### Command List Dropdown
-
-Dropdown menu with pre-defined commands:
-
-```html
-<select class="form-control-3" name="CommandList" id="CommandList">
-  <option value="SENDCOMMAND,AA008104010010018430100182013CA30981010182010183010184020003861A9C01009F02060000000001009F03060000000000005F2A020840">START EMV</option>
-  <option value="SENDCOMMAND,AA0081040113100884021008">CANCEL EMV</option>
-  <option value="SENDCOMMAND,AA00810401121F0184021F01">Reset Device</option>
-  <option value="SENDCOMMAND,AA0081040155D101840FD1018501018704020701028902C100">Get User Notify</option>
-  <!-- Additional options here -->
-</select>
-```
+- **Open Button**: Initiates connection to your MagTek device.
+- **Close Button**: Disconnects your MagTek device.
+- **Clear Button**: Clears displayed log data.
+- **USB Status**: Shows current USB connection status (Connected/Disconnected).
 
 ---
 
-## Key Functionalities
+## Log Data
 
-### USB Connection Status
-
-Displays the real-time status of the USB connection using an image and label. The status updates dynamically based on the device state.
-
-### Device Controls
-
-- Open: Initiates the connection to the device.
-- Close: Terminates the connection.
-- Clear: Clears the logs and input fields.
-
-### Command Data Input and Processing
-
-Users can input custom commands into the `sendData` field and execute them using the "Send Command" button. The results appear in the log section.
-
-### Command List Dropdown
-
-Provides pre-defined commands for common device operations such as starting EMV, canceling EMV, and resetting the device.
+- **Log Text Area**: Provides real-time log information about device interactions and command results.
 
 ---
 
-## JavaScript Implementation
+## Auto Start Options
 
-### MQTT Communication
+Enable automated transaction types:
 
-The `Demo_mmsMQTT.js` file establishes and manages MQTT connections, allowing message-based communication with devices.
-
-#### Example Commands for MQTT Communication
-
-- Start EMV:
-  ```javascript
-  SENDCOMMAND,AA008104010010018430100182013CA30981010182010183010184020003861A9C01009F02060000000001009F03060000000000005F2A020840
-  ```
-
-- Reset Device:
-  ```javascript
-  SENDCOMMAND,AA00810401121F0184021F01
-  ```
-
-### Command Handling
-
-The MQTT commands are processed through a robust handler that supports:
-
-- Sending commands
-- Managing device state transitions
-- Handling responses asynchronously
-
-#### Example Command Handling Logic
-
-- Send Command:
-  ```javascript
-  function sendCommand(command) {
-    // Logic to send an MQTT command to the device
-  }
-  ```
-
-- Handle MQTT Message:
-  ```javascript
-  function handleMessage(topic, message) {
-    // Logic to process incoming MQTT messages
-  }
-  ```
+- **Auto Start**: Automatically initiates configured operations.
+- **EMV**: Enables EMV (chip card) transactions.
+- **NFC**: Enables contactless (NFC) transactions.
+- **MSR**: Enables Magnetic Stripe Reader transactions.
 
 ---
 
-## Event Handling
+## Sending Commands
 
-### Subscribed Events
-
-Event listeners provide real-time feedback on device interactions, including input reports, barcode detection, contactless events, and errors.
-
-#### Example Events
-
-- OnDeviceConnect: Triggered when a device is connected.
-  ```javascript
-  EventEmitter.on("OnDeviceConnect", (e) => {
-    mt_UI.setUSBConnected("Connected");
-  });
-  ```
-
-- OnContactlessCardDetected: Triggered when a contactless card is detected.
-  ```javascript
-  EventEmitter.on("OnContactlessCardDetected", async (e) => {
-    mt_UI.LogData(`Contactless Card Detected`);
-  });
-  ```
-
-- OnError: Captures error details.
-  ```javascript
-  EventEmitter.on("OnError", (e) => {
-    mt_UI.LogData(`Error: ${e.Source} ${JSON.stringify(e.Data)}`);
-  });
-  ```
+- **Command Data Field**: Input custom command data directly.
+- **Send Command Button**: Sends the entered command to the connected device.
 
 ---
 
-## License
+## Predefined Commands
 
-```plaintext
-Copyright 2020-2025 MagTek, Inc., Paul Deignan
+Select and execute commands quickly using the dropdown list:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-```
+- `START EMV`, `CANCEL EMV`: Manage EMV transactions.
+- `Reset Device`: Resets the device settings.
+- `Get User Notify`, `Set User Notify`: Configures event notifications.
+- `START CONTACT`, `START CONTACTLESS`, `START MSR`: Initiates specific transaction modes.
+- `Get SN`, `Get Capabilities`: Retrieves device details.
+- `NFC`, `NFC Mifare`: Manages NFC transactions.
+- `Display Amount`, `Approved`, `Welcome`: Controls device display messages.
+- `Request PIN`: Initiates PIN entry.
+- `PIN Entry Success/Fail`: Confirms or denies PIN validation.
+
+---
+
+## File Input
+
+- **File Input Button**: Use this button to upload files (e.g., firmware updates) to the device.
+
+---
+
+## Troubleshooting
+
+- Confirm USB connection if experiencing issues.
+- Validate that the MQTT server settings are correctly configured.
+- Use **Log Data** for error diagnostics.

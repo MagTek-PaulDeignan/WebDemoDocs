@@ -1,5 +1,5 @@
 ---
-title: MQTT
+title: MQTT V5 Docs
 layout: default
 parent: V5 EMV
 nav_order: 2

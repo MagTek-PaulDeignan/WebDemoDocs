@@ -1,5 +1,5 @@
 ---
-title: Demo Docs
+title: WebHID V5 Docs
 layout: default
 parent: V5 EMV
 nav_order: 1

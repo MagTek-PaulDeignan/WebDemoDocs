@@ -7,6 +7,7 @@ nav_order: 1
 
 # MagTek Configuration Page User Guide
 This document explains how to use the MagTek Configuration webpage to set up and manage the essential settings required for the operation of MagTek devices and services.
+
 The page provides a user interface for configuring various settings related to DynaFlex II PED and the following: Options to set parameters for RMS, WebSocket, MQTT, and Contactless functionalities. Users can input details such as Profile Name, API Key, URLs, WebSocket Address, MQTT credentials, and Contactless Delay. The page features 'Back' and 'Save' buttons to navigate or save the configurations.  Additionally, there's an option to display offline devices when using the MMS MQTT Demo.
 
 ## Getting Started

@@ -1,5 +1,5 @@
 ---
-title: Demo Docs
+title: WebHID MMS Docs
 layout: default
 parent: Web HID
 nav_order: 2

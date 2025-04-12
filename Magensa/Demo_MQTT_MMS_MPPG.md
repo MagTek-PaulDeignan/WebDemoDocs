@@ -1,3 +1,10 @@
+---
+title: MQTT Magensa Demo
+layout: default
+parent: Magensa
+nav_order: 1
+---
+
 # MagTek MQTT MMS Demo Documentation
 
 ## Overview
@@ -8,11 +15,12 @@ The MagTek MQTT MMS Demo provides a web-based interface to interact with Magensa
 ## Table of Contents
 
 - [Setup](#setup)
-  - [Dependencies](#dependencies)
+- [Dependencies](#dependencies)
+- [MQTT Magensa Demo](https://rms.magensa.net/TEST/demo/mmsUnigateDemo.html)
 - [Features](#features)
-  - [Device Connection](#device-connection)
-  - [Sales Processing](#sales-processing)
-  - [Configuration Options](#configuration-options)
+- [Device Connection](#device-connection)
+- [Sales Processing](#sales-processing)
+- [Configuration Options](#configuration-options)
 - [Usage Guide](#usage-guide)
 - [License](#license)
 

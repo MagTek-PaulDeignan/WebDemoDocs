@@ -1,5 +1,5 @@
 ---
-title: Demo Docs
+title: MQTT MMS Docs
 parent: MMS
 layout: default
 nav_order: 1

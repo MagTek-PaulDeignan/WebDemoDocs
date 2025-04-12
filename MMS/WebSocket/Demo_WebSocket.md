@@ -1,5 +1,5 @@
 ---
-title: Demo Docs
+title: MMS Websocket Docs
 layout: home
 parent: WebSocket
 nav_order: 

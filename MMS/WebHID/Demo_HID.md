@@ -7,7 +7,7 @@ nav_order: 2
 
 # MMS WebHID Demo
 
-MagTek HID MMS Demo User Guide
+MagTek [**HID MMS Demo**](https://rms.magensa.net/TEST/demo/mmsdemo.html) User Guide
 
 Interact with MagTek HID devices: send commands, test operations, and manage features.
 

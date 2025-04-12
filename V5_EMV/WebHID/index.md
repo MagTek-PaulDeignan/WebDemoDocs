@@ -7,7 +7,7 @@ parent: V5 EMV
 
 # Web HID
 
-**Web HID** (Web Human Interface Device) is a Web API that allows websites to access and interact with Human Interface Devices (HIDs), like keyboards, mice, and gamepads, directly through JavaScript, bypassing the need for browser extensions or operating system drivers.  Web HID **requires** a Desktop Chromium Browser. 
+**Web HID** (Web Human Interface Device) is a Web API that allows websites to access and interact with Human Interface Devices (HIDs), like keyboards, mice, and gamepads, directly through JavaScript, bypassing the need for browser extensions or operating system drivers.  WebHID **requires** a Desktop [**Chromium Browser**](https://developer.mozilla.org/en-US/docs/Web/API/WebHID_API#:~:text=%23%20dom%2Dhid-,Browser%20compatibility,-Report%20problems%20with). 
 
 ## Web Demos
 

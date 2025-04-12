@@ -5,6 +5,8 @@ nav_order: 1
 
 ---
 
+![alt text](image.png)
+
 # Overview
 
 Welcome to the MagTek **Web Demo Hub** where developers can explore the future of secure payment technology with MagTek's hardware and gateway offerings!
@@ -20,7 +22,7 @@ This interactive portal puts powerful tools in your hands, letting developers, i
 **MagTek 1710 Apollo Court I Seal Beach, CA 90740**<br>
 Phone: (562) 546-6400<br>
 Technical Support: (562) 546-6800<br>
-www.magtek.com
+[www.magtek.com](https://www.magtek.com)
 
 **About MagTek:**
 

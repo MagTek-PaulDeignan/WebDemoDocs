@@ -2,12 +2,12 @@
 title: MQTT MMS Docs
 parent: MMS
 layout: default
-nav_order: 1
+nav_order:
 ---
 
 # MagTek MQTT MMS Demo Documentation
 
-This document provides instructions for using the **MagTek MQTT MMS Demo** page to interact with your MagTek device using **MQTT** for remote messaging and management.
+This document provides instructions for using the MagTek [**MQTT MMS Demo**](https://rms.magensa.net/TEST/demo/mmsMQTTDemo.html) page to interact with your MagTek device using **MQTT** for remote messaging and management.
 
 The page serves as the MQTT MMS Demo interface for MagTek devices. It allows users to interact with any properly configured **MQTT-enabled DynaFlex II PED** device through features like opening and closing connections, clearing logs, sending specific commands, and configuring auto-start options for **EMV**, **NFC**, **MSR**, and **Touch**. A dropdown menu provides a list of predefined commands for testing and operations.
 

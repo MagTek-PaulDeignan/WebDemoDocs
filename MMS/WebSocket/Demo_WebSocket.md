@@ -1,12 +1,14 @@
 ---
-title: Demo Docs
+title: MMS Websocket Docs
 layout: home
 parent: WebSocket
-nav_order: 
+nav_order: 7
 ---
 
 
 # MagTek WebSocket MMS Demo Documentation
+
+This document provides instructions for using the MagTek [**WebSocket MMS Demo**](https://rms.magensa.net/TEST/demo/mmsWebSocket.html) page to interact with your MagTek device using WebSocket for wireless WLAN communications.
 
 ## Table of Contents
 

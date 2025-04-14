@@ -1,225 +1,52 @@
 ---
 title: Device Client Demo Docs
-parent: MMS
+parent: MQTT
 layout: default
 nav_order: 2
 ---
 
-# HID MQTT Device Client Documentation
+# HID MQTT Device Client – Demo Documentation
 
 ## Overview
 
-The [HID MQTT Device Client](https://rms.magensa.net/TEST/demo/mmsmqttdevice.html) is a web-based tool that enables interaction with MagTek devices over MQTT. It facilitates:
-- Device connection via MQTT
-- Command execution
-- Real-time updates through a user interface
-- Simplified device management
+This document provides instructions for the [**HID MQTT Device Client**](https://rms.magensa.net/TEST/demo/mmsmqttdevice.html), a web-based tool designed to establish an MQTT connection with a locally connected MagTek Dyna Family device via USB HID. It facilitates communication between your device and an MQTT broker.
 
-This documentation outlines the setup, core features, and usage instructions.
+## Prerequisites
 
-Devices supported via USB HID include:
-- DynaFlex I
-- DynFlex II
-- DynaFlex II Go
-- DynaFlex II PED
-- DynaProx
+- A MagTek Dyna Family device via USB HID.
+- A compatible desktop Chromium-based web browser (e.g., Google Chrome, Microsoft Edge, etc.).
+- Ensure that no other applications are accessing the MagTek Dyna Family device.
 
----
+## Establishing a Connection
 
-## Table of Contents
+1. **Access the Application**:  
+   Navigate to [https://rms.magensa.net/TEST/demo/mmsmqttdevice.html](https://rms.magensa.net/TEST/demo/mmsmqttdevice.html).
 
-- [Setup](#setup)
-- [HID MQTT Device Client](https://rms.magensa.net/TEST/demo/mmsmqttdevice.html)
-  - [Dependencies](#dependencies)
-- [Initialization](#initialization)
-- [Core Features](#core-features)
-  - [Device Management](#device-management)
-  - [Command Execution](#command-execution)
-  - [Event Handling](#event-handling)
-- [Usage Examples](#usage-examples)
-- [License](#license)
+2. **Connect Your Device**:  
+   Ensure your MagTek Dyna Family device is securely connected to your computer via USB.
 
----
+3. **Initiate Connection**:  
+   Click the **"Open"** button on the webpage to establish a connection between the application and your MagTek Dyna Family device.
 
-## Setup
+   - Once connected, the status indicator will display **"Connected"**.
 
-### Dependencies
+4. **Maintain the Connection**:  
+   - **Do not close** this browser tab or window; the connection will terminate if the page is closed.
+   - **Avoid opening** this application in multiple tabs or windows simultaneously.
+   - You may **minimize** the browser window; the connection will remain active as long as the page is open.
 
-1. Required Modules
-   - `mt_Utils.js`: Utility functions for encoding, delays, and more.
-   - `mt_UI.js`: Handles UI interactions.
-   - `mt_MMSMQTT_API.js`: MQTT interface for device communication.
+## Disconnecting the Device
 
-2. HTML Components
-   - Buttons for device control (`Open`, `Close`).
-   - Text area for logging and command input.
-   - QR Code generation for device links.
+- To terminate the connection, click the **"Close"** button on the webpage.
 
-3. External Libraries
-   - [Bootstrap](https://getbootstrap.com/): For responsive UI components.
+   - The status indicator will change to **"Disconnected"**, confirming the disconnection.
+
+## Additional Features
+
+- **Friendly Name**:  
+  You can assign a custom name to your connected device for easier identification.
+
+   1. Enter your desired name in the **"Friendly Name"** field.
+   2. Click the **"Save"** button to apply the name.
 
 ---
-
-## Initialization
-
-The application initializes when the DOM is fully loaded. It sets up the MQTT connection and configures device parameters.
-
-### Key Configuration Variables
-
-```javascript
-let url = mt_Utils.getEncodedValue('MQTTURL', '<default-mqtt-url>');
-let devPath = mt_Utils.getEncodedValue('MQTTDevice', '');
-let userName = mt_Utils.getEncodedValue('MQTTUser', '<default-username>');
-let password = mt_Utils.getEncodedValue('MQTTPassword', '<default-password>');
-```
-
-### DOM Initialization
-
-Upon loading, the script logs the configured device and opens the MQTT connection.
-
-```javascript
-document.addEventListener("DOMContentLoaded", function handleDOMLoaded() {
-  mt_UI.LogData(`Configured Device: ${devPath}`);
-  handleOpenButton();
-});
-```
-
----
-
-## Core Features
-
-### Device Management
-
-#### Open Device
-
-Establishes an MQTT connection to the configured device.
-
-```javascript
-async function handleOpenButton() {
-  mt_MMSMQTT_API.setURL(url);
-  mt_MMSMQTT_API.setUserName(userName);
-  mt_MMSMQTT_API.setPassword(password);
-  mt_MMSMQTT_API.setPath(devPath);
-  mt_MMSMQTT_API.OpenMQTT();
-}
-```
-
-#### Close Device
-
-Closes the active connection and clears logs.
-
-```javascript
-async function handleCloseButton() {
-  await mt_MMSMQTT_API.CloseMQTT();
-  mt_UI.ClearLog();
-}
-```
-
-#### Clear Logs
-
-Resets the logs and UI elements.
-
-```javascript
-async function handleClearButton() {
-  mt_UI.ClearLog();
-  mt_UI.DeviceDisplay("");
-}
-```
-
----
-
-### Command Execution
-
-#### Execute Commands
-
-The application supports pre-defined and custom MQTT commands.
-
-```javascript
-async function handleSendCommandButton() {
-  const data = document.getElementById("sendData");
-  await parseCommand(data.value);
-}
-```
-
-#### Command Parser
-
-Handles command execution logic.
-
-```javascript
-async function parseCommand(message) {
-  const cmd = message.split(",");
-  switch (cmd[0].toUpperCase()) {
-    case "SENDCOMMAND":
-      mt_MMSMQTT_API.SendCommand(cmd[1]);
-      break;
-    case "GETDEVICESN":
-      const sn = await mt_MMSMQTT_API.GetDeviceSN();
-      mt_UI.LogData(sn);
-      break;
-    default:
-      mt_UI.LogData("Unknown Command");
-  }
-}
-```
-
----
-
-### Event Handling
-
-#### Subscribed Events
-
-1. Device Events
-   - Tracks device connection status.
-
-   ```javascript
-   EventEmitter.on("OnDeviceConnect", (e) => {
-     mt_UI.setUSBConnected("Connected");
-   });
-   ```
-
-2. Transaction Events
-   - Logs transaction completion.
-
-   ```javascript
-   EventEmitter.on("OnTransactionComplete", (e) => {
-     mt_UI.LogData(`${e.Name}: ${e.Data}`);
-   });
-   ```
-
-3. Error Handling
-   - Captures and displays error information.
-
-   ```javascript
-   EventEmitter.on("OnError", (e) => {
-     mt_UI.LogData(`Error: ${e.Source} ${e.Data}`);
-   });
-   ```
-
----
-
-## Usage Examples
-
-### Example: Start EMV Transaction
-
-Use the pre-defined command to initiate an EMV transaction.
-
-```plaintext
-SENDCOMMAND,AA008104010010018430100182013CA30981010182010183010184020003861A9C01009F02060000000001009F03060000000000005F2A020840
-```
-
-### Example: Retrieve Device Serial Number
-
-Fetch and log the device serial number.
-
-```javascript
-parseCommand("GETDEVICESN");
-```
-
----
-## License
-
-```plaintext
-Copyright 2020-2025 MagTek, Inc., Paul Deignan
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-```

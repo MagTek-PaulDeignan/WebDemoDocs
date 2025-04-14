@@ -1,163 +1,106 @@
 ---
-title: Demo Docs
+title: WebHID MMS Docs
 layout: default
-parent: Web HID
-nav_order: 2
+parent: WebHID
+grand_parent: MMS
+nav_order: 1
 ---
 
-# MMS HID Demo
+# MMS WebHID Demo Documentation
 
-## Table of Contents
+This document provides instructions for using the MagTek [**WebHID MMS Demo**](https://rms.magensa.net/TEST/demo/mmsdemo.html) page to interact with your MagTek device using MQTT for remote messaging and management.
 
-- [Overview](#overview)
-- [MMS HID Demo](https://rms.magensa.net/TEST/demo/mmsdemo.html)
-- [Modules and Dependencies](#modules-and-dependencies)
-- [HTML Structure](#html-structure)
-- [Key Functionalities](#key-functionalities)
-  - [USB Connection Status](#usb-connection-status)
-  - [Device Controls](#device-controls)
-  - [Command Data Input and Processing](#command-data-input-and-processing)
-  - [Command List Dropdown](#command-list-dropdown)
-- [JavaScript Implementation](#javascript-implementation)
-- [License](#license)
+This demo application interacts with MagTek USB HID devices: sends commands, tests operations, and manages features.
 
----
+### Getting Started
 
-## Overview
+Open the HID MMS Demo in a **Chromium browser** with the device connected via USB.
 
-The MagTek HID MMS Demo provides an interactive interface for testing and interacting with MagTek HID devices that implement MagTek Messaging Schema (MMS) system architecture.  This demo includes functionality for device connection, command execution, and USB status monitoring.
+### Device Connection
 
-Devices supported include:
-- DynaFlex
-- DynaFlex Pro
-- DynFlex II
-- DynaFlex II Go
-- DynaFlex II PED
-- DynaProx
+- **Open / Close / Clear** – Manage USB connection and logs  
+- **USB Status** – Shows connection state
 
----
+### Log and Status Display
 
-## Modules and Dependencies
+- **Device Display / Image Data / Log Area** – Visual and text feedback
 
-### CSS and JavaScript Resources
+### Auto Start Options
 
-1. Bootstrap CSS:
-   - URL: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css`
-   - Provides responsive design and UI components.
+Enable automatic startup for:
+- EMV
+- NFC
+- MSR
+- Touch (hidden by default)
 
-2. Site-specific CSS:
-   - File: `./css/site.css`
-   - Custom styling for the demo interface.
+### Sending Commands
 
-3. JavaScript Module:
-   - File: `./js/Demo_mmsHID.js`
-   - Contains the core functionality for device interaction and command execution.
+- Enter command manually or use **Command List Dropdown**  
+- Examples: `Start EMV`, `Reset Device`, `Display Commands`, `Request PIN`, etc.
 
----
+### Firmware Update
 
-## HTML Structure
+- **Update Firmware RMS** – Initiates update from RMS
 
-### Header Section
+### File Upload
 
-The header includes the MagTek logo and the title of the application:
+- Upload firmware or certificates using **File Input**
 
-```html
-<div class="container">
-  <a href="index.html">
-    <img src="./images/magtek_logo.png" alt="Logo" width="150">
-  </a>
-</div>
-<div class="container">
-  <h1>HID MMS Demo</h1>
-</div>
-```
+### Progress Bar
 
-### Main Body
+- Shows progress for operations
 
-#### USB Connection Status
+### Troubleshooting
 
-Displays the USB connection status using an image and text indicator:
-
-```html
-<img id="USBStatus" src="./images/usb-disconnected.png">
-<span id="lblUSBStatus">Disconnected</span>
-```
-
-#### Device Controls
-
-Buttons for managing the device connection:
-
-```html
-<button class="btn btn-primary" id="deviceOpen">Open</button>
-<button class="btn btn-primary" id="deviceClose">Close</button>
-<button class="btn btn-primary" id="clearCommand">Clear</button>
-```
-
-#### Command Data Input and Processing
-
-Input field and button for sending commands to the device:
-
-```html
-<input type="text" class="form-control" name="sendData" id="sendData">
-<button class="btn btn-primary" id="sendCommand">Send Command</button>
-```
-
-#### Command List Dropdown
-
-Dropdown menu with pre-defined commands:
-
-```html
-<select class="form-control-3" name="CommandList" id="CommandList">
-  <option value="SENDCOMMAND,AA008104010010018430100182013CA30981010182010183010184020003861A9C01009F02060000000001009F03060000000000005F2A020840">START EMV</option>
-  <!-- Additional options here -->
-</select>
-```
+- Confirm USB is connected  
+- Validate commands  
+- Review logs for errors
 
 ---
 
-## Key Functionalities
+## MagTek MQTT MMS Demo User Guide
 
-### USB Connection Status
+Use MQTT to remotely manage and test MagTek DynaFlex II PED devices.
 
-Displays the real-time status of the USB connection using an image and label. The status updates dynamically based on the device state.
+### Getting Started
 
-### Device Controls
+Open the MQTT MMS Demo page in a **JavaScript-enabled browser**.
 
-- Open: Initiates the connection to the HID device.
-- Close: Terminates the connection.
-- Clear: Clears the logs and input fields.
+### Device Connection
 
-### Command Data Input and Processing
+- **Open / Close / Clear Buttons**  
+- **USB Status** – Displays connection state
 
-Users can input custom commands into the `sendData` field and execute them using the "Send Command" button. The results appear in the log section.
+### Log Data
 
-### Command List Dropdown
+- Monitor device communication via log area
 
-Provides pre-defined commands for common device operations such as starting EMV, canceling EMV, and resetting the device.
+### Auto Start Options
 
----
+Configure for:
+- EMV  
+- NFC  
+- MSR
 
-## JavaScript Implementation
+### Sending Commands
 
-The JavaScript file `Demo_mmsHID.js` contains the logic for:
+- Enter custom command or choose from predefined options  
+- Use **Send Command** to execute
 
-- Handling button click events.
-- Managing the device connection lifecycle.
-- Sending commands to the HID device and processing responses.
-- Updating the USB connection status dynamically.
+### Predefined Commands
 
-### Example Functions
+Examples include:
+- `START EMV`, `CANCEL EMV`  
+- `Get SN`, `Get Capabilities`  
+- `START CONTACT`, `START MSR`  
+- `Display Amount`, `Request PIN`, `PIN Entry Success/Fail`
 
-#### Open Device
-```javascript
-function openDevice() {
-  // Logic to establish connection with the HID device
-}
-```
+### File Input
 
-#### Send Command
-```javascript
-function sendCommand(command) {
-  // Logic to send a command to the device
-}
-```
+- Upload firmware or configuration files
+
+### Troubleshooting
+
+- Confirm USB and MQTT connectivity  
+- Verify server settings  
+- Use logs for diagnostics

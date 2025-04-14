@@ -2,7 +2,7 @@
 title: Semi-Integrated Payments
 layout: default
 parent: Magensa
-nav_order: 3
+nav_order: 2
 ---
 
 # MQTT and Semi-Integrated Payment Model

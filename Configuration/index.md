@@ -1,5 +1,5 @@
 ---
-title: Configure
+title: Config. Options
 layout: default
 nav_order: 7
 ---

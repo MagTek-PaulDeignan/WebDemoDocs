@@ -1,13 +1,14 @@
 ---
 title: WebHID MMS Docs
 layout: default
-parent: MMS
-nav_order:
+parent: WebHID
+grand_parent: MMS
+nav_order: 1
 ---
 
 # MMS WebHID Demo Documentation
 
-This document provides instructions for using the MagTek [**HID MMS Demo**](https://rms.magensa.net/TEST/demo/mmsdemo.html) page to interact with your MagTek device using MQTT for remote messaging and management.
+This document provides instructions for using the MagTek [**WebHID MMS Demo**](https://rms.magensa.net/TEST/demo/mmsdemo.html) page to interact with your MagTek device using MQTT for remote messaging and management.
 
 This demo application interacts with MagTek USB HID devices: sends commands, tests operations, and manages features.
 

@@ -5,11 +5,11 @@ layout: default
 nav_order: 1
 ---
 
-# MagTek MQTT MMS Demo Documentation
+# MQTT MMS Demo Documentation
 
 This document provides instructions for using the MagTek [**MQTT MMS Demo**](https://rms.magensa.net/TEST/demo/mmsMQTTDemo.html) page to interact with your MagTek device using **MQTT** for remote messaging and management.
 
-The page serves as the MQTT MMS Demo interface for MagTek devices. It allows users to interact with any properly configured **MQTT-enabled DynaFlex II PED** device through features like opening and closing connections, clearing logs, sending specific commands, and configuring auto-start options for **EMV**, **NFC**, **MSR**, and **Touch**. A dropdown menu provides a list of predefined commands for testing and operations.
+The page serves as the MQTT MMS Demo interface for MagTek devices. It allows users to interact with any properly configured **MQTT-enabled DynaFlex II PED** device through features like opening and closing connections, clearing logs, sending specific commands, and configuring auto-start options for **EMV**, **NFC**, **MSR**, and **Touch**. A dropdown menu provides a list of predefined commands for testing and operations.  As an alternative to the DynaFlex II PED, this demo also supports other Dyna Family devices (MMS), as long as the user first launches the [**HID MQTT Device Client**](https://rms.magensa.net/TEST/demo/mmsmqttdevice.html).  This companion tool enables MQTT connectivity for any Dyna Family device connected via USB HID, allowing seamless interaction through the demo interface.
 
 ---
 

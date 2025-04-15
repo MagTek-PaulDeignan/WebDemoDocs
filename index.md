@@ -30,4 +30,4 @@ Founded in 1972, MagTek is a leading manufacturer of electronic systems for the 
 
 **MagTek is headquartered in Seal Beach, CA**. For more information, please visit www.magtek.com.
 
-Copyright 2025 ©: Version 1.0.0.0
+Copyright 2025 ©: Version 1.0.0.1

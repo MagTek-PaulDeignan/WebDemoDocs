@@ -2,7 +2,7 @@
 title: WebHID V5 Docs
 layout: default
 parent: WebHID
-grand_parent: V5  EMV
+grand_parent: V5 EMV
 nav_order: 1
 ---
 

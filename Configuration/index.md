@@ -18,10 +18,10 @@ The configuration pages provide a user interface for configuring various setting
 **Users can input details such as:**
 
 - Profile Name
-- API Key\
+- API Key
 - URLs
-- WebSocket Address\
+- WebSocket Address
 - MQTT credentials
-- Contactless Delay.
+- Contactless Delay
 
 The page features 'Back' and 'Save' buttons to navigate or save the configurations.  Additionally, there's an option to display offline devices when using the MMS MQTT Demo.

@@ -1,6 +1,6 @@
 ---
 title: Device Client Demo Docs
-parent: MQTT
+parent: MMS
 layout: default
 nav_order: 2
 ---

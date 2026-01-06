@@ -35,3 +35,4 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 gem "jekyll-default-layout"
 gem 'jekyll-admin', group: :jekyll_plugins
+gem "csv", "~> 3.3"

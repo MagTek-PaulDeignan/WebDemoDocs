@@ -9,6 +9,7 @@ nav_order: 2
 
 ## Overview
 
+
 This document provides instructions for the [**HID MQTT Device Client**](https://rms.magensa.net/TEST/demo/mmsmqttdevice.html), a web-based tool designed to establish an MQTT connection with a locally connected MagTek Dyna Family device via USB HID. It facilitates communication between your device and an MQTT broker.
 
 ## Prerequisites
